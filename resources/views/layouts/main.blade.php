@@ -43,7 +43,7 @@
                 <div class="row flex align-items-center justify-content-space-between">
                     <div class="col-xl-3 col-lg-3 col-md-3">
                         <div class="logo">
-{{--                            <a href="{{ route('index') }}"><img src="{{ asset('assets/img/logo.png') }}" alt="logo"></a>--}}
+                            <a href="{{ route('index') }}"><img src="{{ asset('img/logo.png') }}" alt="logo"></a>
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-9 col-md-9 padding-r-0">
@@ -60,8 +60,7 @@
                     <div class="col-lg-9 col-xl-9 col-md-9">
                         <nav class="header__menu">
                             <ul class="ul flex padding-0">
-                                <li>prosto</li>
-{{--                                <li><a href="{{ route('index') }}" class="{{ request()->routeIs('index') ? 'active' : '' }}">Главная</a></li>--}}
+                                <li><a href="{{ route('index') }}" class="{{ request()->routeIs('index') ? 'active' : '' }}">Главная</a></li>
 {{--                                @if(!is_null(Auth::user()))--}}
 {{--                                    @if(Auth::user()->is_admin)--}}
 {{--                                        <li><a href="{{ route('admin.index') }}" class="{{ request()->routeIs('admin.index') ? 'active' : '' }}">Админка</a></li>--}}
@@ -74,7 +73,6 @@
 {{--                                    {{ request()->routeIs('category.index') ? 'active' : '' }}--}}
 {{--                                    {{ request()->routeIs('category.show') ? 'active' : '' }}">Категории</a></li>--}}
 {{--                                <li><a href="{{ route('parser.all') }}" class="{{ request()->routeIs('parser.all') ? 'active' : '' }}">Парсер Новости</a></li>--}}
-
                             </ul>
                         </nav>
                     </div>
@@ -92,25 +90,25 @@
                                         </li>
                                     @endif
                                 @else
-{{--                                    <li class="nav-item dropdown">--}}
-{{--                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
-{{--                                            {{ Auth::user()->name }} <span class="caret"></span>--}}
-{{--                                        </a>--}}
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }} <span class="caret"></span>
+                                        </a>
 
-{{--                                        <div class="dropdown-menu dropdown-menu-right dropdown__position" aria-labelledby="navbarDropdown">--}}
+                                        <div class="dropdown-menu dropdown-menu-right dropdown__position" aria-labelledby="navbarDropdown">
 {{--                                            <a class="dropdown-item header__drop" href="{{ route('profile.index') }}">--}}
 {{--                                                Личный кабинет--}}
 {{--                                            </a>--}}
-{{--                                            <a class="dropdown-item header__drop" href="{{ route('logout') }}"--}}
-{{--                                               onclick="event.preventDefault();--}}
-{{--                                                     document.getElementById('logout-form').submit();">--}}
-{{--                                                Выйти--}}
-{{--                                            </a>--}}
-{{--                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
-{{--                                                @csrf--}}
-{{--                                            </form>--}}
-{{--                                        </div>--}}
-{{--                                    </li>--}}
+                                            <a class="dropdown-item header__drop" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                Выйти
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
                                 @endguest
                             </ul>
                         </div>
