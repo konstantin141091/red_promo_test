@@ -5,18 +5,7 @@
         <div class="row">
 
             @forelse($news as $item)
-                <div class="col-lg-4">
-                    <div class="content__bottom__single">
-                        <div class="content__bottom__single__img margin-bottom-30"> <img src="http://placehold.it/237x157" alt="poster"> </div>
-                        <div class="content__bottom__text">
-                            <span>{{ $item->description }}</span>
-                            <span style="background-color: #ff939c">Избраное</span>
-                            <h3><a href="#">{{ $item->title }}</a></h3> </div>
-                        @auth
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Добавить в мои избраные</button>
-                        @endauth
-                    </div>
-                </div>
+                @include('components.news_tpl', ['news' => $item])
             @empty
                 <p>Новостей нет</p>
             @endforelse

@@ -26,5 +26,10 @@ Route::group([
     Route::get('/', 'NewsController@index')->name('index');
     Route::get('/show/{news}', 'NewsController@show')->name('show');
     Route::get('/find', 'NewsController@find')->name('find');
+    Route::post('/favorites/{id}', 'NewsController@addNewsForFavorite')->name('favorites')
+        ->middleware('auth');
+    Route::get('/favorites', 'NewsController@favoritesUserNews')->name('favorites')
+        ->middleware('auth');
 });
+
 

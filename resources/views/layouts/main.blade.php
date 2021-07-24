@@ -67,8 +67,12 @@
                                 <li><a href="{{ route('news.index') }}" class="
                                     {{ request()->routeIs('news.index') ? 'active' : '' }}
                                     {{ request()->routeIs('news.show') ? 'active' : '' }}">Новости</a></li>
+                                @auth
+                                    <li><a href="{{ route('news.favorites') }}" class="{{ request()->routeIs('news.favorites') ? 'active' : '' }}">Мои избраные</a></li>
+                                @endauth
 
-{{--                                @if(!is_null(Auth::user()))--}}
+
+                                {{--                                @if(!is_null(Auth::user()))--}}
 {{--                                    @if(Auth::user()->is_admin)--}}
 {{--                                        <li><a href="{{ route('admin.index') }}" class="{{ request()->routeIs('admin.index') ? 'active' : '' }}">Админка</a></li>--}}
 {{--                                    @endif--}}
@@ -103,9 +107,6 @@
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right dropdown__position" aria-labelledby="navbarDropdown">
-{{--                                            <a class="dropdown-item header__drop" href="{{ route('profile.index') }}">--}}
-{{--                                                Личный кабинет--}}
-{{--                                            </a>--}}
                                             <a class="dropdown-item header__drop" href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
