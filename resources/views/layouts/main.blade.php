@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/bf05fd6411.js"></script>
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <title>Тестовое задание для Red Promo</title>
 </head>
 
@@ -61,19 +64,23 @@
                         <nav class="header__menu">
                             <ul class="ul flex padding-0">
                                 <li><a href="{{ route('index') }}" class="{{ request()->routeIs('index') ? 'active' : '' }}">Главная</a></li>
+                                <li><a href="{{ route('news.index') }}" class="
+                                    {{ request()->routeIs('news.index') ? 'active' : '' }}
+                                    {{ request()->routeIs('news.show') ? 'active' : '' }}">Новости</a></li>
+
 {{--                                @if(!is_null(Auth::user()))--}}
 {{--                                    @if(Auth::user()->is_admin)--}}
 {{--                                        <li><a href="{{ route('admin.index') }}" class="{{ request()->routeIs('admin.index') ? 'active' : '' }}">Админка</a></li>--}}
 {{--                                    @endif--}}
 {{--                                @endif--}}
-{{--                                <li><a href="{{ route('news.index') }}" class="--}}
-{{--                                    {{ request()->routeIs('news.index') ? 'active' : '' }}--}}
-{{--                                    {{ request()->routeIs('news.show') ? 'active' : '' }}">Новости</a></li>--}}
-{{--                                <li><a href="{{ route('category.index') }}" class="--}}
-{{--                                    {{ request()->routeIs('category.index') ? 'active' : '' }}--}}
-{{--                                    {{ request()->routeIs('category.show') ? 'active' : '' }}">Категории</a></li>--}}
-{{--                                <li><a href="{{ route('parser.all') }}" class="{{ request()->routeIs('parser.all') ? 'active' : '' }}">Парсер Новости</a></li>--}}
                             </ul>
+                        </nav>
+                        <nav class="navbar navbar-light bg-light">
+                            <form class="form-inline" action="{{ route('news.find') }}" method="GET">
+                                <input class="form-control mr-sm-2" type="text" name="news_find"
+                                       placeholder="Строка для посика" aria-label="Search" value="{{ old('news_find') }}">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
+                            </form>
                         </nav>
                     </div>
                     <div class="col-lg-3 col-xl-3 col-md-3">
@@ -158,7 +165,7 @@
                 <div class="col-xl-5 col-lg-5 col-md-7 col-sm-12">
                     <div class="footer__top__left">
                         <div class="footer__logo">
-{{--                            <a href="{{ route('index') }}"><img src="{{ asset('assets/img/logo2_footer.png') }}" alt="logo"></a>--}}
+                            <a href="{{ route('index') }}"><img src="{{ asset('img/logo2_footer.png') }}" alt="logo"></a>
                         </div>
                         <div class="footer__title">
                             <p class="margin-bottom-50"> Suscipit mauris pede for con sectetuer sodales adipisci for cursus fames lectus tempor da blandit gravida sodales Suscipit mauris pede for con sectetuer sodales adipisci for cursus fames lectus tempor da blandit gravida sodales Suscipit mauris pede for sectetuer. </p>
@@ -172,9 +179,9 @@
                         <div class="footer__form">
                             <form action="">
                                 <input type="email" placeholder="Email Adress">
-{{--                                <div class="footer__form__btn">--}}
-{{--                                    <button><img src="{{ asset('assets/img/form-iocn.png') }}" alt="send"></button>--}}
-{{--                                </div>--}}
+                                <div class="footer__form__btn">
+                                    <button><img src="{{ asset('img/form-iocn.png') }}" alt="send"></button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -224,10 +231,8 @@
                     <div class="col-lg-6">
                         <div class="footer__menu float-right">
                             <ul class="ul flex">
-{{--                                <li><a href="{{ route('index') }}">Главная</a></li>--}}
-{{--                                <li><a href="{{ route('news.index') }}">Новости</a></li>--}}
-                                <li><a href="#">main</a></li>
-                                <li><a href="#">main</a></li>
+                                <li><a href="{{ route('index') }}">Главная</a></li>
+                                <li><a href="{{ route('news.index') }}">Новости</a></li>
                             </ul>
                         </div>
                     </div>
@@ -236,21 +241,6 @@
         </div>
     </div>
 </footer>
-
-<script>
-
-  $(window).scroll(function () {
-    header = document.getElementById('header-fixed');
-    if(pageYOffset > 300) {
-
-      header.classList.add('header__fixed__menu');
-    }else {
-
-      header.classList.remove('header__fixed__menu');
-    }
-
-  });
-</script>
 </body>
 
 </html>

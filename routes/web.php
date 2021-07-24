@@ -15,4 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// index page
 Route::get('/', 'IndexController@index')->name('index');
+
+//routes for news
+Route::group([
+    'prefix' => 'news',
+    'as' => 'news.',
+], function () {
+    Route::get('/', 'NewsController@index')->name('index');
+    Route::get('/show/{news}', 'NewsController@show')->name('show');
+    Route::get('/find', 'NewsController@find')->name('find');
+});
+
