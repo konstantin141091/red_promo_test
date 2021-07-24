@@ -32,4 +32,12 @@ Route::group([
         ->middleware('auth');
 });
 
+//routes for locations
+Route::group([
+    'prefix' => 'location',
+    'as' => 'location.',
+], function () {
+    Route::get('/', 'LocationController@show')->name('show');
+});
+
 

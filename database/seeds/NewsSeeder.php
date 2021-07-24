@@ -25,9 +25,18 @@ class NewsSeeder extends Seeder
                 'description' => $faker->realText(rand(30, 70)),
                 'text' => $faker->realText(rand(500, 4000)),
                 'favorites' => rand(0,1),
+                'location_id'=> $this->getLocation($i),
             ];
         }
 
         return $data;
+    }
+
+    private function getLocation($count) {
+        if ($count % 2 === 0) {
+            return null;
+        }  else {
+            return rand(1,2);
+        }
     }
 }

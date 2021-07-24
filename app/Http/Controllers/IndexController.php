@@ -9,8 +9,8 @@ class IndexController extends Controller
 {
     public function index() {
         $favorite_news = News::query()->where('favorites', '=', 1)->paginate(9);
-        return view('pages.index', [
-            'news' => $favorite_news,
+        return $this->returnView('pages.index', [
+            'news' => $favorite_news
         ]);
     }
 }

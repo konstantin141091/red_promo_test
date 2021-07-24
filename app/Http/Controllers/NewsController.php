@@ -12,14 +12,14 @@ class NewsController extends Controller
 {
     public function index() {
         $news = News::query()->paginate(9);
-        return view('pages.news.index', [
-            'news' => $news,
+        return $this->returnView('pages.news.index', [
+            'news' => $news
         ]);
     }
 
     public function show(News $news) {
         $similar_news = (new SimilarNews())->getSimilarModels($news);
-        return view('pages.news.show', [
+        return $this->returnView('pages.news.show', [
             'news' => $news,
             'similar_news' => $similar_news,
         ]);
@@ -30,7 +30,7 @@ class NewsController extends Controller
         $request->validated();
         $search_value = '%' . $request->news_find . '%';
         $news = News::query()->where('title', 'like', $search_value)->paginate(9);
-        return view('pages.news.index', [
+        return $this->returnView('pages.news.index', [
             'news' => $news,
         ]);
     }
@@ -53,7 +53,7 @@ class NewsController extends Controller
     public function favoritesUserNews() {
         $news = News::query()->join('user_favorites_news', 'news.id', '=', 'user_favorites_news.news_id')
             ->where('user_favorites_news.user_id', Auth::id())->select('news.*')->paginate(9);
-        return view('pages.news.index', [
+        return $this->returnView('pages.news.index', [
             'news' => $news,
         ]);
     }

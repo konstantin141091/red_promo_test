@@ -70,19 +70,23 @@
                                 @auth
                                     <li><a href="{{ route('news.favorites') }}" class="{{ request()->routeIs('news.favorites') ? 'active' : '' }}">Мои избраные</a></li>
                                 @endauth
-
-
-                                {{--                                @if(!is_null(Auth::user()))--}}
-{{--                                    @if(Auth::user()->is_admin)--}}
-{{--                                        <li><a href="{{ route('admin.index') }}" class="{{ request()->routeIs('admin.index') ? 'active' : '' }}">Админка</a></li>--}}
-{{--                                    @endif--}}
-{{--                                @endif--}}
                             </ul>
                         </nav>
-                        <nav class="navbar navbar-light bg-light">
+                        <nav class="navbar navbar-light bg-light ">
                             <form class="form-inline" action="{{ route('news.find') }}" method="GET">
                                 <input class="form-control mr-sm-2" type="text" name="news_find"
                                        placeholder="Строка для посика" aria-label="Search" value="{{ old('news_find') }}">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
+                            </form>
+                            <form class="form-inline" method="GET" action="{{ route('location.show') }}">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1" class="mr-2">Выберите город</label>
+                                    <select class="form-control mr-3" id="exampleFormControlSelect1" name="location">
+                                        @foreach($locations as $location)
+                                            <option value="{{ $location->id }}">{{ $location->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
                             </form>
                         </nav>
