@@ -28,7 +28,7 @@
         <div class="mb-3">
             @auth
                 @userFavorites($news->id)
-                <form action="{{ route('news.favorites', $news->id) }}" method="POST" class="mb-3">
+                <form action="{{ route('news.favorites.add', $news->id) }}" method="POST" class="mb-3">
                     @csrf
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Добавить в мои избраные</button>
                 </form>
